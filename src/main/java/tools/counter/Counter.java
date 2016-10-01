@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class Counter {
 
+    private static final int WORD_ADDED_FIRS_TIME = 1;
     private Map<String, Integer> words;
 
     public Counter() {
@@ -12,15 +13,34 @@ public class Counter {
     }
 
     public void addWord(String word) {
-        words.put(word, 1);
+        if (isWordAlreadyAdded(word)) {
+            incrementNumberOfWordOccurrences(word);
+        } else {
+            addWordForFirsTime(word);
+        }
     }
 
+    private boolean isWordAlreadyAdded(String word) {
+        return words.containsKey(word);
+    }
+
+    private void incrementNumberOfWordOccurrences(String word) {
+        int numberOfOccurrences = words.get(word);
+        words.put(word, ++numberOfOccurrences);
+    }
+
+    private Integer addWordForFirsTime(String word) {
+        return words.put(word, WORD_ADDED_FIRS_TIME);
+    }
+
+
     public boolean checkIfWordExists(String word) {
-        if (words.containsKey(word)) {
+        if (isWordAlreadyAdded(word)) {
             return true;
         }
         return false;
     }
+
 
     public Map getMapWithWords() {
         return new HashMap<>(words);
