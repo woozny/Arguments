@@ -21,4 +21,8 @@ public class Counter {
         }
         return false;
     }
+
+    public Map getMapWithWords() {
+        return new HashMap<>(words);
+    }
 }
