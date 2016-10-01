@@ -35,7 +35,19 @@ public class CounterTest {
 
         assertThat(mapWithWords.containsKey(WORD1)).isTrue();
         assertThat(mapWithWords.containsKey(WORD2)).isTrue();
+    }
 
+    @Test
+    public void shouldBeAbleToVerifyHowManyTimesWordHasBeenAdded() {
+        counter.addWord(WORD1);
+        counter.addWord(WORD1);
+        counter.addWord(WORD2);
+        counter.addWord(WORD2);
+        counter.addWord(WORD2);
 
+        Map mapWithWords = counter.getMapWithWords();
+
+        assertThat(mapWithWords.get(WORD1)).isEqualTo(2);
+        assertThat(mapWithWords.get(WORD2)).isEqualTo(3);
     }
 }
