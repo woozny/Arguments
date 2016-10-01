@@ -12,6 +12,10 @@ public class Counter {
         words = new HashMap<>();
     }
 
+    public boolean checkIfWordExists(String word) {
+        return isWordAlreadyAdded(word);
+    }
+
     public void addWord(String word) {
         if (isWordAlreadyAdded(word)) {
             incrementNumberOfWordOccurrences(word);
@@ -32,15 +36,6 @@ public class Counter {
     private Integer addWordForFirsTime(String word) {
         return words.put(word, WORD_ADDED_FIRS_TIME);
     }
-
-
-    public boolean checkIfWordExists(String word) {
-        if (isWordAlreadyAdded(word)) {
-            return true;
-        }
-        return false;
-    }
-
 
     public Map getMapWithWords() {
         return new HashMap<>(words);
