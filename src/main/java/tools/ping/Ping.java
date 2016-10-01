@@ -1,7 +1,15 @@
 package tools.ping;
 
-public class Ping {
-    public String ping(String argument) {
+public class Ping implements PingLogic {
+
+    private String argument;
+
+    Ping(String argument) {
+        this.argument = argument;
+    }
+
+    @Override
+    public String getArgument() {
         return argument;
     }
 }
