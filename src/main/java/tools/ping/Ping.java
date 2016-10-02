@@ -1,15 +1,19 @@
 package tools.ping;
 
-public class Ping implements PingLogic {
+public class Ping {
 
     private String argument;
 
-    Ping(String argument) {
-        this.argument = argument;
+    public String parseAndReturnArgument(String[] arg) {
+        if (hasMoreThanTwoArguments(arg)) {
+            argument = arg[1];
+        } else {
+            argument = "null";
+        }
+        return argument;
     }
 
-    @Override
-    public String getArgument() {
-        return argument;
+    private boolean hasMoreThanTwoArguments(String[] arg) {
+        return arg.length >= 2;
     }
 }

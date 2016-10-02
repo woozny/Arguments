@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import tools.ping.PingLogic;
+import tools.ping.Ping;
 
 import static org.mockito.Mockito.verify;
 
@@ -14,7 +14,7 @@ public class PingCommandTest {
     private static final String[] ARGUMENT = {"PING"};
 
     @Mock
-    PingLogic ping;
+    Ping ping;
 
     @Test
     public void shouldExecuteMethodToGetArgument() {
@@ -22,7 +22,6 @@ public class PingCommandTest {
 
         pingCommand.execute(ARGUMENT);
 
-        verify(ping).getArgument();
+        verify(ping).parseAndReturnArgument(ARGUMENT);
     }
-
 }

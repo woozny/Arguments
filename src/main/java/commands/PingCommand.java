@@ -1,17 +1,17 @@
 package commands;
 
-import tools.ping.PingLogic;
+import tools.ping.Ping;
 
 public class PingCommand implements Command {
 
-    PingLogic ping;
+    private Ping ping;
 
-    public PingCommand(PingLogic pingLogic) {
-        this.ping = pingLogic;
+    public PingCommand(Ping ping) {
+        this.ping = ping;
     }
 
     @Override
     public void execute(String[] arguments) {
-        System.out.println(ping.getArgument());
+        System.out.println(ping.parseAndReturnArgument(arguments));
     }
 }
