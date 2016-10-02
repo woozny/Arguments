@@ -11,7 +11,7 @@ public class PingCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(String[] arguments) {
         System.out.println(ping.getArgument());
     }
 }

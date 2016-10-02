@@ -14,7 +14,8 @@ public class CounterCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public void execute(String[] arguments) {
+        counter.addWord(arguments[0]);
         Map wordMap = counter.getMapWithWords();
         MapPrinter.pintMap(wordMap);
     }

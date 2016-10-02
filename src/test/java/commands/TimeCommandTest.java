@@ -11,13 +11,15 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class TimeCommandTest {
 
+    private static final String[] ARGUMENT = {"TIME"};
+
     @Mock private Time time;
 
     @Test
     public void shouldExecuteMethodReturningCurrentTime() {
         Command timeCommand = new TimeCommand(time);
 
-        timeCommand.execute();
+        timeCommand.execute(ARGUMENT);
 
         verify(time).getCurrentTime();
 
