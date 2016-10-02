@@ -6,12 +6,13 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import tools.counter.Counter;
-import tools.ping.PingLogic;
 
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CounterCommandTest {
+
+    private static final String[] ARGUMENT = {"COUNTER"};
 
     @Mock
     Counter counter;
@@ -23,8 +24,9 @@ public class CounterCommandTest {
     public void shouldExecuteMethodToGetArgument() {
         Command counterCommand = new CounterCommand(counter);
 
-        counterCommand.execute();
+        counterCommand.execute(ARGUMENT);
 
+        verify(counter).addWord(ARGUMENT[0]);
         verify(counter).getMapWithWords();
     }
 

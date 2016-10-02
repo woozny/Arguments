@@ -2,25 +2,24 @@ package tools.ping;
 
 import org.junit.Test;
 
-import static org.assertj.core.api.Assertions.*;
-import static tools.ping.PingFactory.createPing;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PingTest {
 
-    private static final String ARGUMENT1 = "Arg";
-    private static final String NULL_ARGUMENT = null;
+    private static final String[] ONE_ARGUMENT = {"PING"};
+    private static final String[] TWO_ARGUMENTS = {"PING", "dummy_arg"};
     private static final String LITERAL_NULL_STRING = "null";
 
+    private Ping ping = new Ping();
+
     @Test
-    public void shouldReturnProvidedString() {
-        PingLogic ping = createPing(ARGUMENT1);
-        assertThat(ping.getArgument()).isEqualTo(ARGUMENT1);
+    public void shouldReturnSecondArgument() {
+        assertThat(ping.parseAndReturnArgument(TWO_ARGUMENTS)).isEqualTo(TWO_ARGUMENTS[1]);
     }
 
     @Test
-    public void shouldReturnNullForMissingArgument() {
-        PingLogic ping = createPing(NULL_ARGUMENT);
-        assertThat(ping.getArgument()).isEqualTo(LITERAL_NULL_STRING);
+    public void shouldReturnNullIfOnlyOneArgumentProvided() {
+        assertThat(ping.parseAndReturnArgument(ONE_ARGUMENT)).isEqualTo(LITERAL_NULL_STRING);
     }
 
 }

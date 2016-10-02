@@ -16,7 +16,7 @@ public class Invoker {
         commands.put(commandName, command);
     }
 
-    public void invokeCommand(String commandName) {
-        commands.get(commandName).execute();
+    public void invokeCommand(String commandName, String[] arguments) {
+        commands.get(commandName).execute(arguments);
     }
 }
