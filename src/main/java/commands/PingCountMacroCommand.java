@@ -3,12 +3,12 @@ package commands;
 import tools.counter.Counter;
 import tools.ping.Ping;
 
-public class PingCommand implements Command {
+public class PingCountMacroCommand implements Command {
 
     private final Ping ping;
     private final Counter counter;
 
-    public PingCommand(Ping ping, Counter counter) {
+    public PingCountMacroCommand(Ping ping, Counter counter) {
         this.ping = ping;
         this.counter = counter;
     }

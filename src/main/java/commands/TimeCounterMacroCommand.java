@@ -3,12 +3,12 @@ package commands;
 import tools.Time.Time;
 import tools.counter.Counter;
 
-public class TimeCommand implements Command {
+public class TimeCounterMacroCommand implements Command {
 
     private final Time time;
     private final Counter counter;
 
-    public TimeCommand(Time time, Counter counter) {
+    public TimeCounterMacroCommand(Time time, Counter counter) {
         this.time = time;
         this.counter = counter;
     }

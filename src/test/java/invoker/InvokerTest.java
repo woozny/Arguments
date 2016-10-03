@@ -1,8 +1,8 @@
 package invoker;
 
 import commands.CounterCommand;
-import commands.PingCommand;
-import commands.TimeCommand;
+import commands.PingCountMacroCommand;
+import commands.TimeCounterMacroCommand;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,9 +29,9 @@ public class InvokerTest {
     @Mock private Counter counter;
     @Mock private Ping ping;
 
-    private TimeCommand timeCommand;
+    private TimeCounterMacroCommand timeCounterMacroCommand;
     private CounterCommand counterCommand;
-    private PingCommand pingCommand;
+    private PingCountMacroCommand pingCountMacroCommand;
 
     private Invoker invoker;
 
@@ -39,12 +39,12 @@ public class InvokerTest {
     public void init() {
         invoker = new Invoker();
 
-        timeCommand = new TimeCommand(time, counter);
-        pingCommand = new PingCommand(ping, counter);
+        timeCounterMacroCommand = new TimeCounterMacroCommand(time, counter);
+        pingCountMacroCommand = new PingCountMacroCommand(ping, counter);
         counterCommand = new CounterCommand(counter);
 
-        invoker.setCommand(TIME_COMMAND_NAME, timeCommand);
-        invoker.setCommand(PING_COMMAND_NAME, pingCommand);
+        invoker.setCommand(TIME_COMMAND_NAME, timeCounterMacroCommand);
+        invoker.setCommand(PING_COMMAND_NAME, pingCountMacroCommand);
         invoker.setCommand(COUNT_COMMAND_NAME, counterCommand);
     }
 

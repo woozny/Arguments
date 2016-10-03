@@ -2,8 +2,8 @@ package launcher;
 
 import commands.Command;
 import commands.CounterCommand;
-import commands.PingCommand;
-import commands.TimeCommand;
+import commands.PingCountMacroCommand;
+import commands.TimeCounterMacroCommand;
 import invoker.Invoker;
 import tools.Time.Time;
 import tools.counter.Counter;
@@ -31,8 +31,8 @@ public class Launcher {
 
 
         Command counterCommand = new CounterCommand(counter);
-        Command timeCommand = new TimeCommand(time, counter);
-        Command pingCommand = new PingCommand(ping, counter);
+        Command timeCommand = new TimeCounterMacroCommand(time, counter);
+        Command pingCommand = new PingCountMacroCommand(ping, counter);
 
         invoker.setCommand(COUNT_ARG, counterCommand);
         invoker.setCommand(TIME_ARG, timeCommand);
