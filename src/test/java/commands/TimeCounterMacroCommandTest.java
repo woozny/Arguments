@@ -10,7 +10,7 @@ import tools.counter.Counter;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TimeCommandTest {
+public class TimeCounterMacroCommandTest {
 
     private static final String[] ARGUMENT = {"TIME"};
 
@@ -19,7 +19,7 @@ public class TimeCommandTest {
 
     @Test
     public void shouldExecuteMethodReturningCurrentTime() {
-        Command timeCommand = new TimeCommand(time, counter);
+        Command timeCommand = new TimeCounterMacroCommand(time, counter);
 
         timeCommand.execute(ARGUMENT);
 
@@ -28,7 +28,7 @@ public class TimeCommandTest {
 
     @Test
     public void shouldCountCommandWhileExecutingTimeMethods() {
-        Command timeCommand = new TimeCommand(time, counter);
+        Command timeCommand = new TimeCounterMacroCommand(time, counter);
 
         timeCommand.execute(ARGUMENT);
 

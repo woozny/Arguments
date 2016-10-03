@@ -10,7 +10,7 @@ import tools.ping.Ping;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PingCommandTest {
+public class PingCountMacroCommandTest {
 
     private static final String[] ARGUMENT = {"PING"};
 
@@ -19,7 +19,7 @@ public class PingCommandTest {
 
     @Test
     public void shouldExecuteMethodToGetArgument() {
-        Command pingCommand = new PingCommand(ping, counter);
+        Command pingCommand = new PingCountMacroCommand(ping, counter);
 
         pingCommand.execute(ARGUMENT);
 
@@ -28,7 +28,7 @@ public class PingCommandTest {
 
     @Test
     public void shouldCountCommandWhileInvokingPingMethods() {
-        Command pingCommand = new PingCommand(ping, counter);
+        Command pingCommand = new PingCountMacroCommand(ping, counter);
 
         pingCommand.execute(ARGUMENT);
 
