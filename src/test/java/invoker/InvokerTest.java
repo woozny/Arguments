@@ -1,6 +1,7 @@
 package invoker;
 
 import commands.CounterCommand;
+import commands.PingCommand;
 import commands.TimeCommand;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import tools.Time.Time;
 import tools.counter.Counter;
+import tools.ping.Ping;
 
 import static org.mockito.Mockito.*;
 
@@ -25,9 +27,11 @@ public class InvokerTest {
 
     @Mock private Time time;
     @Mock private Counter counter;
+    @Mock private Ping ping;
 
     private TimeCommand timeCommand;
     private CounterCommand counterCommand;
+    private PingCommand pingCommand;
 
     private Invoker invoker;
 
@@ -35,10 +39,12 @@ public class InvokerTest {
     public void init() {
         invoker = new Invoker();
 
-        timeCommand = new TimeCommand(time);
+        timeCommand = new TimeCommand(time, counter);
+        pingCommand = new PingCommand(ping, counter);
         counterCommand = new CounterCommand(counter);
 
         invoker.setCommand(TIME_COMMAND_NAME, timeCommand);
+        invoker.setCommand(PING_COMMAND_NAME, pingCommand);
         invoker.setCommand(COUNT_COMMAND_NAME, counterCommand);
     }
 
@@ -54,5 +60,10 @@ public class InvokerTest {
         invoker.invokeCommand(COUNT_COMMAND_NAME, COUNT_ARGUMENT);
 
         verify(counter).addWord(COUNT_ARGUMENT[0]);
+    }
+
+    @Test
+    public void shouldExecutrPingMethiidWithPingArguments() {
+        invoker.invokeCommand(PING_COMMAND_NAME, PING_ARGUMENT);
     }
 }
